@@ -63,7 +63,7 @@ def search(
     """Busca chunks similares a la query. Convierte distancia cosine a similitud."""
     from rag.embeddings import get_embedding
 
-    query_embedding = get_embedding(query)
+    query_embedding = get_embedding(query) # convertimos la pregunta de usuario a embedding vectorial
 
     kwargs: dict = {
         "query_embeddings": [query_embedding],
