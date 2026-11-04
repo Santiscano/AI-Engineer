@@ -1,7 +1,6 @@
 from http import client
 import os
 import math
-from urllib import response
 from openai import OpenAI
 from dotenv import load_dotenv
 

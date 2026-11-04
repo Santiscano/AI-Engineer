@@ -43,16 +43,16 @@ class RAGPipeline:
         if not texts:
             return
 
-        ids = [f"doc_{uuid.uuid4().hex[:8]}" for _ in texts]
+        ids = [f"doc_{uuid.uuid4().hex[:8]}" for _ in texts] # generamos un ID único para cada texto de 8 caracteres
 
         if metadatas is None:
-            metadatas = [{"fuente": "manual"} for _ in texts]
+            metadatas = [{"fuente": "manual"} for _ in texts] # si no se proporcionan metadatas, asignamos una por defecto
 
         self.collection.add(
             ids=ids,
             documents=texts,
             metadatas=metadatas
-        )
+        ) # agregamos los textos a la colección
 
         print(f"{len(texts)} fragmentos indexados"
               f"Total en DB: {self.collection.count()}")
@@ -66,30 +66,30 @@ class RAGPipeline:
     ) -> int:
         """Divide un texto largo en chunks"""
 
-        chunk_chars_size = chunk_size * 4
+        chunk_chars_size = chunk_size * 4 # esto es porque cada token de OpenAI es aproximadamente 4 caracteres en promedio
 
         chunks = []
         start = 0
 
         while start < len(long_text):
-            end = start + chunk_chars_size
-            chunk = long_text[start:end]
+            end = start + chunk_chars_size # inicialmente es por ejemplo 500*4=2000 caracteres
+            chunk = long_text[start:end] # primer pedazo de 2000 caracteres
 
-            if chunk.strip():
+            if chunk.strip(): # si el chunk no está vacío, lo agregamos
                 chunks.append(chunk)
 
-            start = end - (overlap*4)
+            start = end - (overlap*4) # movemos el inicio para el próximo chunk, considerando el overlap "para tener contexto"
 
         metadatas = []
 
-        for i, _ in enumerate(chunks):
-            meta = (base_metadata or {}).copy()
-            meta["chunk_numero"] = i
-            meta["chunk_total"] = len(chunks)
-            metadatas.append(meta)
-        self.index_texts(chunks, metadatas)
+        for i, _ in enumerate(chunks): # iteramos sobre los chunks
+            meta = (base_metadata or {}).copy() # copiamos el metadata base para no modificarlo
+            meta["chunk_numero"] = i # agregamos el número de chunk
+            meta["chunk_total"] = len(chunks) # agregamos el total de chunks
+            metadatas.append(meta) # agregamos el metadata a la lista
+        self.index_texts(chunks, metadatas) # indexamos los chunks con sus metadatas
 
-        return len(chunks)
+        return len(chunks) # retornamos la cantidad de chunks indexados
 
     def retrieve_context(
         self,
@@ -101,20 +101,20 @@ class RAGPipeline:
             query_texts=[question],
             n_results=min(n_fragments, self.collection.count()),
             include=["documents", "metadatas", "distances"]
-        )
+        ) # consultamos la colección para obtener los fragmentos más relevantes
 
         fragments = []
 
-        for i in range(len(results["documents"][0])):
-            similarity = round(1 - (results["distances"][0][i]), 3)
+        for i in range(len(results["documents"][0])): # iteramos sobre los resultados obtenidos
+            similarity = round(1 - (results["distances"][0][i]), 3) # calculamos la similitud como 1 - distancia, redondeada a 3 decimales
 
             if similarity > 0.3:
                 fragments.append({
                     "texto": results["documents"][0][i],
                     "metadata": results["metadatas"][0][i],
                     "similitud": similarity
-                })
-        return fragments
+                }) # agregamos el fragmento a la lista si la similitud es mayor a 0.3
+        return fragments # retornamos los fragmentos relevantes encontrados
 
     def answer(
         self,
@@ -125,7 +125,7 @@ class RAGPipeline:
         """Pipeline completo RAG"""
 
         # 1. Recupear contexto relevante
-        fragments = self.retrieve_context(question, n_fragments)
+        fragments = self.retrieve_context(question, n_fragments) # obtenemos los fragmentos relevantes para la pregunta
 
         if not fragments:
             return {
@@ -151,7 +151,6 @@ class RAGPipeline:
         ])
 
         # 3. Generar respuesta con el LLM usando el contexto
-
         system_prompt = """Eres un asistente experto que responde preguntas
         basándote ÚNICAMENTE en el contexto proporcionado.
         Reglas:
