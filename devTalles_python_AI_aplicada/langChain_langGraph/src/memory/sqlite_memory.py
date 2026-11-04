@@ -1,13 +1,11 @@
-
-
 import os
 
 from langchain_community.chat_message_histories import SQLChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from sqlalchemy import create_engine, text
 
-from devTalles_python_AI_aplicada.src.memory.base import BaseMemoryBackend
-from devTalles_python_AI_aplicada.src.config.settings import settings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.memory.base import BaseMemoryBackend
+from devTalles_python_AI_aplicada.langChain_langGraph.src.config.settings import settings
 
 class SQLiteMemoryBackend(BaseMemoryBackend):
     """Backend de memoria persistente usando SQlite"""

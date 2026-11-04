@@ -3,8 +3,8 @@ import os
 
 from langchain_chroma import Chroma
 
-from devTalles_python_AI_aplicada.src.core.llm import get_embeddings
-from devTalles_python_AI_aplicada.src.config.settings import settings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.core.llm import get_embeddings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.config.settings import settings
 
 
 def get_or_create_vectorstore(

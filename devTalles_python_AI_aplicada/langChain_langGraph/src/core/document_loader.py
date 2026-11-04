@@ -5,7 +5,7 @@ from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-from devTalles_python_AI_aplicada.src.config.settings import settings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.config.settings import settings
 
 
 SUPPORTED_EXTENSIONS = {".txt", ".pdf"}

@@ -5,10 +5,10 @@ from typing import Literal
 from langchain.messages import HumanMessage, AIMessage
 from langchain_chroma import Chroma
 
-from devTalles_python_AI_aplicada.src.config import settings
-from devTalles_python_AI_aplicada.src.core.llm import get_llm
-from devTalles_python_AI_aplicada.src.graphs.prompts import get_context_section, get_prompt_template_node_analyzer, get_prompt_template_node_generator
-from devTalles_python_AI_aplicada.src.graphs.states import RagAgentState
+from devTalles_python_AI_aplicada.langChain_langGraph.src.config import settings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.core.llm import get_llm
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.prompts import get_context_section, get_prompt_template_node_analyzer, get_prompt_template_node_generator
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.states import RagAgentState
 
 
 def node_analyze(state: RagAgentState) -> dict:

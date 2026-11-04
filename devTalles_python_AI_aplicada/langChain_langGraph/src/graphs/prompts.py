@@ -1,7 +1,4 @@
-
-
-
-from devTalles_python_AI_aplicada.src.graphs.states import RagAgentState
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.states import RagAgentState
 
 
 def get_prompt_template_node_analyzer(recent_context: str, state: RagAgentState) -> str:

@@ -2,7 +2,7 @@
 from functools import lru_cache
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
-from devTalles_python_AI_aplicada.src.config.settings import settings
+from devTalles_python_AI_aplicada.langChain_langGraph.src.config.settings import settings
 
 @lru_cache(maxsize=1)
 def get_llm(temperature: float = None) -> ChatOpenAI:

@@ -3,8 +3,8 @@ from functools import partial
 from langchain_chroma import Chroma
 from langgraph.graph import END, START, StateGraph
 
-from devTalles_python_AI_aplicada.src.graphs.nodes import decide_retrieval_path, node_analyze, node_generate, node_retrieve
-from devTalles_python_AI_aplicada.src.graphs.states import RagAgentState
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.nodes import decide_retrieval_path, node_analyze, node_generate, node_retrieve
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.states import RagAgentState
 
 def build_rag_agent(vectorstore: Chroma):
     """Construir y compilar RAG agéntico"""

@@ -1,12 +1,10 @@
-
-
 import os
 
 from langchain_community.chat_message_histories import SQLChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from sqlalchemy import create_engine, text
 
-from devTalles_python_AI_aplicada.src.memory.base import BaseMemoryBackend
+from devTalles_python_AI_aplicada.langChain_langGraph.src.memory.base import BaseMemoryBackend
 
 class PostgreSQLMemoryBackend(BaseMemoryBackend):
     """Backend de memoria usando PostgreSQL"""

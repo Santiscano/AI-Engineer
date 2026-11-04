@@ -6,14 +6,14 @@ import uuid
 
 from langchain.messages import HumanMessage
 
-from devTalles_python_AI_aplicada.src.graphs.rag_agent import build_rag_agent
-from devTalles_python_AI_aplicada.src.graphs.states import RagAgentState
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.rag_agent import build_rag_agent
+from devTalles_python_AI_aplicada.langChain_langGraph.src.graphs.states import RagAgentState
 
-from devTalles_python_AI_aplicada.src.memory.base import BaseMemoryBackend
-from devTalles_python_AI_aplicada.src.memory.postgresql_memory import PostgreSQLMemoryBackend
-from devTalles_python_AI_aplicada.src.memory.sqlite_memory import SQLiteMemoryBackend
-from devTalles_python_AI_aplicada.src.core.document_loader import load_directory, split_documents
-from devTalles_python_AI_aplicada.src.core.embeddings import get_or_create_vectorstore
+from devTalles_python_AI_aplicada.langChain_langGraph.src.memory.base import BaseMemoryBackend
+from devTalles_python_AI_aplicada.langChain_langGraph.src.memory.postgresql_memory import PostgreSQLMemoryBackend
+from devTalles_python_AI_aplicada.langChain_langGraph.src.memory.sqlite_memory import SQLiteMemoryBackend
+from devTalles_python_AI_aplicada.langChain_langGraph.src.core.document_loader import load_directory, split_documents
+from devTalles_python_AI_aplicada.langChain_langGraph.src.core.embeddings import get_or_create_vectorstore
 
 DOCUMENTS_DIR = Path("data/documents")
 COLLECTION_NAME = "knwoledge_base"
