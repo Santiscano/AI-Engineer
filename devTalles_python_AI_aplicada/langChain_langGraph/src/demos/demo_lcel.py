@@ -1,4 +1,4 @@
-"""Demo LCEL"""
+"""Demo LCEL= LangChain Expression Language"""
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
