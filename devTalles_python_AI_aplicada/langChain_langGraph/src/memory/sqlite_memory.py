@@ -11,9 +11,9 @@ class SQLiteMemoryBackend(BaseMemoryBackend):
     """Backend de memoria persistente usando SQlite"""
 
     def __init__(self, db_path: str = None):
-        self.db_path = db_path or settings.SQLITE_DB_PATH
-        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        self._connection_string = f"sqlite:///{self.db_path}"
+        self.db_path = db_path or settings.SQLITE_DB_PATH # ruta por defecto para la base de datos SQLite
+        os.makedirs(os.path.dirname(self.db_path), exist_ok=True) # crear directorio si no existe
+        self._connection_string = f"sqlite:///{self.db_path}" # cadena de conexión a la base de datos
 
     def get_history(self, session_id: str) -> BaseChatMessageHistory:
         """Retorna el historial de mensajes para una sesión"""

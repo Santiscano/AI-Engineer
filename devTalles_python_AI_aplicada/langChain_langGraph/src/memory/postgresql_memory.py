@@ -1,3 +1,6 @@
+# instalaciones para postgresql
+# pip install sqlalchemy psycopg2-binary
+
 import os
 
 from langchain_community.chat_message_histories import SQLChatMessageHistory
