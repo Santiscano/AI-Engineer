@@ -96,6 +96,7 @@ def split_documents(
 ) -> list[Document]:
     """Divide los documentos en chunks para indexación"""
 
+    # RecursiveCharacterTextSplitter es un splitter que divide el texto en chunks de tamaño definido, con un overlap definido, y usando los separadores definidos. Se priorizan los saltos de línea y luego los espacios.
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size or settings.CHUNK_SIZE,
         chunk_overlap=chunk_overlap or settings.CHUNK_OVERLAP,

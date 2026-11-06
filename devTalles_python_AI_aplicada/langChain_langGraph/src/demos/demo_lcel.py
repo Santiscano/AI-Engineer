@@ -43,8 +43,6 @@ def demo_steps_inspection() -> None:
         ("human", "{pregunta}")
     ])
 
-    parser = StrOutputParser()
-
     input_message = {"pregunta": "¿Qué es una API REST?"}
 
     # Paso 1 prompt
@@ -61,6 +59,8 @@ def demo_steps_inspection() -> None:
     print(f" Contenido: {ai_message.content[:100]}...")
 
     # Paso 3: Parser extraer texto
+    parser = StrOutputParser()
+    
     text = parser.invoke(ai_message)
     print("Paso 3 - Parser output")
     print(f" Tipo: {type(text).__name__}")
@@ -95,7 +95,7 @@ def demo_batch() -> None:
 
 
 # generar efecto de streaming en tiempo real.
-def demo_steaming() -> None:
+def demo_streaming() -> None:
     """Método streaming"""
     prompt = ChatPromptTemplate.from_messages([
         ("system", "Explica conceptos técnicos de forma clara."),
@@ -113,7 +113,7 @@ def demo_steaming() -> None:
     print("\n")
 
 
-#
+# passthrough es un tipo de runnable que simplemente pasa la entrada tal cual a la salida, sin modificarla. Esto es útil cuando queremos combinarlo con otros runnables en una cadena, pero no necesitamos transformar la entrada en ese paso.
 def demo_passthrough() -> None:
     """Passthrough"""
     # Simula retriever

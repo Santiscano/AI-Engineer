@@ -16,6 +16,7 @@ def build_chatbot(backend: BaseMemoryBackend) -> RunnableWithMessageHistory:
     """
     chain = build_assistant_chain()
 
+    # RunnableWithMessageHistory es un wrapper que permite que el chain tenga memoria de mensajes, usando el backend proporcionado para almacenar y recuperar el historial de la conversación.
     return RunnableWithMessageHistory(
         chain,
         backend.get_history,

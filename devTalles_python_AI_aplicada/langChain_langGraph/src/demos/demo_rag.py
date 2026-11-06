@@ -13,7 +13,7 @@ CHROMA_PATH = "./data/chromadb_rag_demo"
 
 
 def index_documents() -> tuple:
-    """Carga archivos reales desde dicso y divide en chunks"""
+    """Carga archivos reales desde disco y divide en chunks"""
     docs = load_directory(DOCUMENTS_DIR)
 
     if not docs:
