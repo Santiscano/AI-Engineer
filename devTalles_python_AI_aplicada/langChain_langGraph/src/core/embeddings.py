@@ -12,11 +12,12 @@ def get_or_create_vectorstore(
     persist_path: str = None,
 ) -> Chroma:
     """Obtener un vector store existente o crear uno nuevo"""
-    path = persist_path or settings.CHROMA_PATH
-    os.makedirs(path, exist_ok=True)
+    path = persist_path or settings.CHROMA_PATH # obtener la ruta de persistencia desde la configuración si no se proporciona
+    os.makedirs(path, exist_ok=True) # crear la carpeta si no existe
 
+    # instanciar chroma con la función de embeddings y la ruta de persistencia
     return Chroma(
         collection_name=collection_name,
-        embedding_function=get_embeddings(),
+        embedding_function=get_embeddings(), # obtener la función de embeddings desde la configuración
         persist_directory=path,
     )
